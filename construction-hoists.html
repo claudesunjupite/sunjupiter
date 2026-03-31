@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 
 <html class="light" lang="en"><head>
-
-
-
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" as="style"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" media="print" onload="this.media='all'"/><noscript><link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" as="style"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" media="print" onload="this.media='all'"/><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap"/></noscript></noscript>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet" media="print" onload="this.media='all'"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><meta charset="utf-8"/>
+  <link rel="icon" type="image/jpeg" href="/assets/favicon.jpg"/>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://cdn.tailwindcss.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Tower Cranes | CREDO - Sun Jupiter Co., Ltd.</title>
     
     
-<link rel="preload" href="/assets/tailwind.css" as="style"/><link rel="stylesheet" href="/assets/tailwind.css"/><script>window.toggleModalText = function() {
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">    window.toggleModalText = function() {
         const textContainer = document.getElementById('modal-description-text');
         const fadeObj = document.getElementById('modal-text-fade');
         const icon = document.getElementById('modal-read-more-icon');
@@ -32,8 +34,95 @@
             icon.textContent = 'expand_more';
             readText.textContent = 'Read More';
         }
-    };</script>
+    };
+</script>
 <noscript></noscript>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#fab894",
+              "surface-bright": "#fff8f6",
+              "on-secondary-fixed-variant": "#693b20",
+              "secondary-fixed": "#ffdbca",
+              "surface-container-low": "#fff1eb",
+              "on-secondary-fixed": "#331200",
+              "error": "#ba1a1a",
+              "surface-dim": "#ead6cd",
+              "on-primary": "#ffffff",
+              "outline-variant": "#ddc1b3",
+              "inverse-surface": "#3a2e28",
+              "primary-container": "#b45309",
+              "on-tertiary-container": "#cffbff",
+              "on-tertiary-fixed": "#002022",
+              "primary": "#903f00",
+              "inverse-primary": "#ffb68e",
+              "on-secondary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#f2dfd6",
+              "tertiary-container": "#237a80",
+              "surface-tint": "#9b4500",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#331200",
+              "primary-fixed": "#ffdbca",
+              "surface-container-high": "#f8e4db",
+              "on-primary-fixed-variant": "#763300",
+              "surface-variant": "#f2dfd6",
+              "outline": "#897267",
+              "secondary-container": "#fdba96",
+              "primary-fixed-dim": "#ffb68e",
+              "on-tertiary-fixed-variant": "#004f54",
+              "tertiary": "#006166",
+              "on-secondary-container": "#79482c",
+              "surface-container": "#feeae1",
+              "tertiary-fixed": "#a1f0f6",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-container": "#fff1eb",
+              "on-surface": "#231914",
+              "inverse-on-surface": "#ffede5",
+              "on-tertiary": "#ffffff",
+              "on-background": "#231914",
+              "secondary": "#845235",
+              "tertiary-fixed-dim": "#85d3da",
+              "on-surface-variant": "#564338",
+              "surface": "#fff8f6",
+              "error-container": "#ffdad6",
+              "background": "#fff8f6"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Roboto"],
+              "label": ["Roboto"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+        window.toggleModalText = function() {
+        const textContainer = document.getElementById('modal-description-text');
+        const fadeObj = document.getElementById('modal-text-fade');
+        const icon = document.getElementById('modal-read-more-icon');
+        const readText = document.getElementById('modal-read-more-text');
+        
+        if (textContainer.classList.contains('max-h-[40px]')) {
+            // Expand
+            textContainer.classList.remove('max-h-[40px]', 'md:max-h-[44px]');
+            textContainer.classList.add('max-h-[300px]');
+            fadeObj.style.opacity = '0';
+            icon.textContent = 'expand_less';
+            readText.textContent = 'Show Less';
+        } else {
+            // Collapse
+            textContainer.classList.add('max-h-[40px]', 'md:max-h-[44px]');
+            textContainer.classList.remove('max-h-[300px]');
+            fadeObj.style.opacity = '1';
+            icon.textContent = 'expand_more';
+            readText.textContent = 'Read More';
+        }
+    };
+</script>
 <style>
     /* ── SPA View Transition: smooth horizontal slide ─────────── */
     ::view-transition-old(root) {
@@ -262,13 +351,13 @@ if (!window.spaRouterLoaded) {
         }
     };
 </script>
-<script src="//assets/lang.js"></script>
+<script src="assets/lang.js"></script>
 </head>
 <body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
 <!-- STANDARDIZED NAVBAR -->
 <nav class="fixed top-0 w-full z-50 bg-white/85 backdrop-blur-md shadow-sm border-b border-neutral-200/50 flex justify-between items-center px-8 py-4 w-full max-w-none transition-all duration-300">
 <div class="flex items-center cursor-pointer transition-transform hover:scale-105" onclick="window.navigateToSPA ? window.navigateToSPA('index.html') : window.location.href='index.html'">
-<img loading="eager" alt="SUN JUPITER CO.,LTD. Logo" class="h-14 md:h-16 w-auto object-contain" src="images/sunjupiter-logo.png"/>
+<img loading="eager" alt="SUN JUPITER CO.,LTD. Logo" class="h-14 md:h-16 w-auto object-contain" src="assets/sunjupiter-logo.png"/>
 </div>
 <div class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight text-sm uppercase">
 <a class="text-neutral-700 hover:text-yellow-600 transition-colors transition-all duration-300" href="index.html">Home</a>
@@ -294,7 +383,7 @@ English
 </div>
 </div>
 <div class="h-6 w-px bg-neutral-300 hidden md:block"></div>
-<img loading="eager" src="images/credo.png" alt="CREDO" class="hidden lg:block h-8 w-auto object-contain" style="filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));">
+<img loading="eager" src="assets/credo.png" alt="CREDO" class="hidden lg:block h-8 w-auto object-contain" style="filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));">
 </div>
 </nav>
 <main class="pt-20">
@@ -302,15 +391,15 @@ English
 <section id="hero-slider" class="relative h-[600px] overflow-hidden flex items-center bg-surface-container-highest">
 <div id="hero-track" class="absolute inset-y-0 left-0 w-[300%] h-full z-0 flex transform -translate-x-[33.333333%] transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] will-change-transform">
     <div class="w-1/3 h-full relative shrink-0 bg-neutral-200">
-        <img loading="eager" src="images/concrete.jpg" width="1920" height="600" class="w-full h-full object-cover opacity-80 mix-blend-multiply" />
+        <img loading="eager" src="assets/concrete.jpg" width="1920" height="600" class="w-full h-full object-cover opacity-80 mix-blend-multiply" />
         <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/40 to-transparent"></div>
     </div>
     <div class="w-1/3 h-full relative shrink-0 bg-neutral-300">
-        <img loading="lazy" src="images/images/Hoist-Elevator-Lift.png" width="1920" height="600" class="w-full h-full object-cover opacity-80 mix-blend-multiply" />
+        <img loading="lazy" src="assets/Hoist-Elevator-Lift.png" width="1920" height="600" class="w-full h-full object-cover opacity-80 mix-blend-multiply" />
         <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/40 to-transparent"></div>
     </div>
     <div class="w-1/3 h-full relative shrink-0 bg-neutral-200">
-        <img loading="lazy" src="images/crane.jpg" width="1920" height="600" class="w-full h-full object-cover opacity-80 mix-blend-multiply" />
+        <img loading="lazy" src="assets/crane.jpg" width="1920" height="600" class="w-full h-full object-cover opacity-80 mix-blend-multiply" />
         <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/40 to-transparent"></div>
     </div>
 </div>
@@ -1016,7 +1105,7 @@ setTimeout(() => {
 
                 <div class="mt-4 relative group">
                     <div class="relative h-64 md:h-80 rounded-xl overflow-hidden border border-white/10 shadow-lg">
-                        <img loading="lazy" id="cat-modal-img" src="images/images/Hoist-Elevator-Lift.png" class="w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-700" />
+                        <img loading="lazy" id="cat-modal-img" src="assets/Hoist-Elevator-Lift.png" class="w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-700" />
                         <div class="absolute inset-0 bg-stone-900/40 group-hover:bg-transparent transition-colors"></div>
                         
                         <!-- Navigation Arrows -->
