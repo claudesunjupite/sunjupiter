@@ -133,6 +133,9 @@ if (!window.spaRouterLoaded) {
             const doc = new DOMParser().parseFromString(text, 'text/html');
             
             const performSwap = () => {
+                // Extract all script text BEFORE DOM swap (replaceWith moves main out of doc)
+                const scriptTexts = Array.from(doc.querySelectorAll('body script:not([src])')).map(s => s.textContent);
+
                 const currentMain = document.querySelector('main');
                 const newMain = doc.querySelector('main');
                 if (currentMain && newMain) {
@@ -149,10 +152,10 @@ if (!window.spaRouterLoaded) {
                 
                 document.title = doc.title;
                 
-                const inlineScripts = doc.querySelectorAll('body script:not([src])');
-                inlineScripts.forEach(script => {
+                // Re-execute scripts (using pre-extracted text to avoid missing in-main scripts)
+                scriptTexts.forEach(text => {
                     const newScript = document.createElement('script');
-                    newScript.textContent = script.textContent;
+                    newScript.textContent = text;
                     document.body.appendChild(newScript);
                 });
 
