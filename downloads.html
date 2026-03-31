@@ -1,16 +1,80 @@
 <!DOCTYPE html>
 
 <html class="light" lang="en"><head>
-  <link rel="preload" href="assets/tailwind.css" as="style"/>
-  <link rel="stylesheet" href="assets/tailwind.css"/>
   <title>Downloads | Brochures & Catalogues — Sun Jupiter Co., Ltd.</title>
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://cdn.tailwindcss.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#fabd00",
+              "inverse-on-surface": "#f3f0ef",
+              "surface-dim": "#dcd9d9",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#ffdf9e",
+              "on-secondary-fixed": "#1b1c1c",
+              "primary-fixed-dim": "#fabd00",
+              "inverse-surface": "#313030",
+              "on-secondary-fixed-variant": "#474746",
+              "outline": "#7e775f",
+              "tertiary-fixed": "#79f5ff",
+              "on-tertiary-fixed-variant": "#004f54",
+              "tertiary-fixed-dim": "#00dbe8",
+              "surface": "#fcf9f8",
+              "on-background": "#1c1b1b",
+              "tertiary": "#00696f",
+              "surface-bright": "#fcf9f8",
+              "secondary-fixed": "#e5e2e1",
+              "secondary": "#5f5e5e",
+              "surface-container-highest": "#e5e2e1",
+              "error": "#ba1a1a",
+              "primary": "#b45309",
+              "on-primary-container": "#795a00",
+              "surface-container-high": "#ebe7e7",
+              "surface-container-lowest": "#ffffff",
+              "on-surface-variant": "#4d4732",
+              "tertiary-container": "#00f1ff",
+              "surface-container-low": "#f6f3f2",
+              "background": "#fcf9f8",
+              "on-tertiary-container": "#006a70",
+              "error-container": "#ffdad6",
+              "on-tertiary": "#ffffff",
+              "surface-tint": "#b45309",
+              "secondary-container": "#e2dfde",
+              "outline-variant": "#d0c6ab",
+              "surface-container": "#f0edec",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed": "#002022",
+              "on-primary-fixed": "#261a00",
+              "secondary-fixed-dim": "#c8c6c5",
+              "surface-variant": "#e5e2e1",
+              "on-primary-fixed-variant": "#5b4300",
+              "primary-container": "#ffd478",
+              "on-surface": "#1c1b1b",
+              "on-secondary-container": "#636262",
+              "on-error": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Roboto"],
+              "label": ["Roboto"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
 <style>
     /* ── SPA View Transition: smooth cross-fade ────────────────── */
     ::view-transition-old(root) {
@@ -92,20 +156,13 @@ if (!window.spaRouterLoaded) {
                     document.body.appendChild(newScript);
                 });
 
-                // Force Tailwind CDN to re-scan new DOM classes (fixes animations + group-hover)
                 if (window.tailwind && typeof window.tailwind.refresh === 'function') {
                     window.tailwind.refresh();
                 }
-
-                // Re-trigger CSS animations so they play fresh on SPA navigation
                 setTimeout(() => {
                     document.querySelectorAll('[class*="animate-"]').forEach(el => {
                         const cls = [...el.classList].find(c => c.startsWith('animate-'));
-                        if (cls) {
-                            el.classList.remove(cls);
-                            void el.offsetWidth;
-                            el.classList.add(cls);
-                        }
+                        if (cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
                     });
                 }, 50);
                 
@@ -164,7 +221,7 @@ if (!window.spaRouterLoaded) {
 <body class="bg-surface text-on-surface antialiased">
 <!-- STANDARDIZED NAVBAR -->
 <nav class="fixed top-0 w-full z-50 bg-white/85 backdrop-blur-md shadow-sm border-b border-neutral-200/50 flex justify-between items-center px-8 py-4 w-full max-w-none transition-all duration-300">
-<div class="flex items-center cursor-pointer transition-transform hover:scale-105" onclick="window.navigateToSPA ? window.navigateToSPA('index.html') : window.location.href='index.html'">
+<div class="flex items-center cursor-pointer transition-transform hover:scale-105" onclick="window.navigateToSPA ? window.navigateToSPA('../home_sun_jupiter_co._ltd._vibrant/code.html') : window.location.href='../home_sun_jupiter_co._ltd._vibrant/code.html'">
 <img loading="eager" alt="SUN JUPITER CO.,LTD. Logo" class="h-14 md:h-16 w-auto object-contain" src="assets/sunjupiter-logo.png"/>
 </div>
 <div class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight text-sm uppercase">
@@ -247,7 +304,7 @@ English
 <span class="text-tertiary-fixed-dim material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
 <span class="font-manrope text-xs font-bold uppercase tracking-widest text-outline">Technical Ops</span>
 </div>
-<h2 class="font-headline text-3xl font-black mb-4 leading-tight">JUPITER-X9 SERIES <br/> OPERATION MASTER</h2>
+<h3 class="font-headline text-3xl font-black mb-4 leading-tight">JUPITER-X9 SERIES <br/> OPERATION MASTER</h3>
 <p class="text-on-surface-variant font-medium text-sm leading-loose mb-8 max-w-sm">
                             The complete operational framework for the X9 heavy-lift series. Includes maintenance schedules and load-bearing stress diagrams.
                         </p>
@@ -265,7 +322,7 @@ English
 </div>
 <div class="flex-grow">
 <span class="font-manrope text-xs font-bold uppercase tracking-widest text-outline">Certifications</span>
-<h2 class="font-headline text-2xl font-black mb-2 leading-tight">ISO 9001:2015 QUALITY MANAGEMENT</h2>
+<h3 class="font-headline text-2xl font-black mb-2 leading-tight">ISO 9001:2015 QUALITY MANAGEMENT</h3>
 <p class="text-on-surface-variant text-sm font-medium mb-4">Current verification of our global quality standards and technical auditing results.</p>
 <a class="inline-flex items-center gap-2 text-secondary font-headline text-xs font-black uppercase hover:gap-4 transition-all" href="#">
                         Request Original Copy <span class="material-symbols-outlined text-lg">arrow_forward</span>
@@ -311,7 +368,7 @@ English
 <div class="flex items-center gap-6 mb-4 md:mb-0">
 <div class="w-12 h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface-variant font-black font-headline group-hover:bg-primary group-hover:text-white transition-colors">PDF</div>
 <div>
-<h3 class="font-headline font-extrabold text-lg uppercase leading-tight">Daily Maintenance Log Template</h3>
+<h5 class="font-headline font-extrabold text-lg uppercase leading-tight">Daily Maintenance Log Template</h5>
 <p class="text-on-surface-variant text-xs font-medium">Updated: Nov 12, 2023 | 2.1 MB | Language: EN, DE, FR</p>
 </div>
 </div>
@@ -324,7 +381,7 @@ English
 <div class="flex items-center gap-6 mb-4 md:mb-0">
 <div class="w-12 h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface-variant font-black font-headline group-hover:bg-primary group-hover:text-white transition-colors">ZIP</div>
 <div>
-<h3 class="font-headline font-extrabold text-lg uppercase leading-tight">Site Reference High-Res Gallery</h3>
+<h5 class="font-headline font-extrabold text-lg uppercase leading-tight">Site Reference High-Res Gallery</h5>
 <p class="text-on-surface-variant text-xs font-medium">Updated: Oct 05, 2023 | 412 MB | Media Archive</p>
 </div>
 </div>
@@ -337,7 +394,7 @@ English
 <div class="flex items-center gap-6 mb-4 md:mb-0">
 <div class="w-12 h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface-variant font-black font-headline group-hover:bg-primary group-hover:text-white transition-colors">PDF</div>
 <div>
-<h3 class="font-headline font-extrabold text-lg uppercase leading-tight">ISO 14001 Environmental Standard</h3>
+<h5 class="font-headline font-extrabold text-lg uppercase leading-tight">ISO 14001 Environmental Standard</h5>
 <p class="text-on-surface-variant text-xs font-medium">Updated: Jan 20, 2024 | 1.8 MB | Compliance</p>
 </div>
 </div>
@@ -390,4 +447,4 @@ English
 
 
 
-                                                                                                                                                                             
+                                                                                                                                                                            
