@@ -247,7 +247,7 @@ if (!window.spaRouterLoaded) {
 <body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
 <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-yellow-600 focus:text-white focus:px-4 focus:py-2 focus:font-bold focus:rounded">Skip to main content</a>
 <!-- STANDARDIZED NAVBAR -->
-<nav aria-label="Main navigation" class="fixed top-0 w-full z-50 bg-white/85 backdrop-blur-md shadow-sm border-b border-neutral-200/50 flex justify-between items-center px-8 py-4 w-full max-w-none transition-all duration-300">
+<nav aria-label="Main navigation" class="relative fixed top-0 w-full z-50 bg-white/85 backdrop-blur-md shadow-sm border-b border-neutral-200/50 flex justify-between items-center px-8 py-4 w-full max-w-none transition-all duration-300">
 <a href="index.html" class="flex items-center transition-transform hover:scale-105" onclick="if(window.navigateToSPA){event.preventDefault();window.navigateToSPA('index.html')}" aria-label="SUN JUPITER CO.,LTD. — Go to homepage">
 <img loading="eager" alt="SUN JUPITER CO.,LTD. Logo" class="h-14 md:h-16 w-auto object-contain" src="assets/sunjupiter-logo.webp"/>
 </a>
@@ -259,7 +259,7 @@ if (!window.spaRouterLoaded) {
 <a class="text-neutral-700 hover:text-yellow-600 transition-colors transition-all duration-300" href="contact.html">Contact Us</a>
 </div>
 <div class="flex items-center gap-6">
-<div class="relative group">
+<div class="mobile-center-abs relative group">
 <button class="flex items-center gap-1 text-xs font-bold text-neutral-600 hover:text-yellow-600 uppercase tracking-widest transition-colors py-2" aria-label="Select language" aria-haspopup="true" aria-expanded="false">
 <span class="material-symbols-outlined text-[18px]" aria-hidden="true">language</span>
 EN
@@ -276,8 +276,25 @@ English
 </div>
 <div class="h-6 w-px bg-neutral-300 hidden md:block"></div>
 <img loading="eager" src="assets/credo.webp" alt="CREDO" class="hidden lg:block h-8 w-auto object-contain icon-drop-shadow">
+<button class="md:hidden flex flex-col items-center justify-center" id="hamburger-btn" aria-label="Open navigation menu" onclick="toggleNavOverlay(true)" style="gap:5px;width:38px;height:38px;border:2px solid #a3a3a3;border-radius:6px;background:transparent;cursor:pointer;flex-shrink:0;transition:border-color 0.2s" onmouseover="this.style.borderColor='#ca8a04'" onmouseout="this.style.borderColor='#a3a3a3'">
+  <span style="display:block;width:16px;height:2px;background:#404040;border-radius:1px"></span>
+  <span style="display:block;width:16px;height:2px;background:#404040;border-radius:1px"></span>
+  <span style="display:block;width:16px;height:2px;background:#404040;border-radius:1px"></span>
+</button>
 </div>
 </nav>
+<div id="nav-overlay" style="display:none;opacity:0;transition:opacity 0.35s ease;position:fixed;inset:0;z-index:60;background:#0a0a0a;flex-direction:column;align-items:center;justify-content:center">
+  <button onclick="toggleNavOverlay(false)" aria-label="Close menu" style="position:absolute;top:24px;right:32px;background:none;border:none;cursor:pointer;color:#fff;line-height:1;padding:8px">
+    <span class="material-symbols-outlined" style="font-size:32px">close</span>
+  </button>
+  <div style="display:flex;flex-direction:column;align-items:flex-start;gap:28px;padding:48px 32px">
+    <a href="index.html" onclick="navOverlayGo(event,'index.html')" style="font-size:clamp(28px,5vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;color:#fff;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#ca8a04'" onmouseout="this.style.color='#fff'">Home</a>
+    <a href="about.html" onclick="navOverlayGo(event,'about.html')" style="font-size:clamp(28px,5vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;color:#fff;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#ca8a04'" onmouseout="this.style.color='#fff'">About Us</a>
+    <span style="font-size:clamp(28px,5vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;color:#ca8a04">Product</span>
+    <a href="site-reference.html" onclick="navOverlayGo(event,'site-reference.html')" style="font-size:clamp(28px,5vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;color:#fff;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#ca8a04'" onmouseout="this.style.color='#fff'">Site Reference</a>
+    <a href="contact.html" onclick="navOverlayGo(event,'contact.html')" style="font-size:clamp(28px,5vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;color:#fff;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#ca8a04'" onmouseout="this.style.color='#fff'">Contact Us</a>
+  </div>
+</div>
 <main id="main-content" class="pt-24 has-hero">
 <!-- Hero Section -->
 <section id="hero-slider" class="relative h-[600px] overflow-hidden flex items-center bg-surface-container-highest">
@@ -1131,4 +1148,26 @@ function downloadPdf(btn) {
 }
 </script>
 
+<script>
+function toggleNavOverlay(open) {
+  const overlay = document.getElementById('nav-overlay');
+  if (!overlay) return;
+  if (open) {
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    setTimeout(function() { overlay.style.opacity = '1'; }, 10);
+  } else {
+    overlay.style.opacity = '0';
+    document.body.style.overflow = '';
+    setTimeout(function() { overlay.style.display = 'none'; }, 350);
+  }
+}
+function navOverlayGo(e, url) {
+  e.preventDefault();
+  toggleNavOverlay(false);
+  setTimeout(function() {
+    window.navigateToSPA ? window.navigateToSPA(url, true) : (window.location.href = url);
+  }, 370);
+}
+</script>
 </body></html>

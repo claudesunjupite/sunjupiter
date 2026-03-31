@@ -192,6 +192,11 @@ if (!window.spaRouterLoaded) {
 <a class="text-neutral-700 hover:text-yellow-600 transition-colors transition-all duration-300" href="site-reference.html">Site Reference</a>
 <a class="text-neutral-700 hover:text-yellow-600 transition-colors transition-all duration-300" href="contact.html">Contact Us</a>
 </div>
+<button class="md:hidden flex flex-col items-center justify-center" id="hamburger-btn" aria-label="Open navigation menu" onclick="toggleNavOverlay(true)" style="gap:5px;width:38px;height:38px;border:2px solid #a3a3a3;border-radius:6px;background:transparent;cursor:pointer;flex-shrink:0;transition:border-color 0.2s" onmouseover="this.style.borderColor='#ca8a04'" onmouseout="this.style.borderColor='#a3a3a3'">
+  <span style="display:block;width:16px;height:2px;background:#404040;border-radius:1px"></span>
+  <span style="display:block;width:16px;height:2px;background:#404040;border-radius:1px"></span>
+  <span style="display:block;width:16px;height:2px;background:#404040;border-radius:1px"></span>
+</button>
 <div class="flex items-center gap-6">
 <div class="relative group">
 <button class="flex items-center gap-1 text-xs font-bold text-neutral-600 hover:text-yellow-600 uppercase tracking-widest transition-colors py-2" aria-label="Select language" aria-haspopup="true" aria-expanded="false">
@@ -212,6 +217,18 @@ English
 <img loading="eager" src="assets/credo.webp" alt="CREDO" class="hidden lg:block h-8 w-auto object-contain icon-drop-shadow">
 </div>
 </nav>
+<div id="nav-overlay" style="display:none;opacity:0;transition:opacity 0.35s ease;position:fixed;inset:0;z-index:60;background:#0a0a0a;flex-direction:column;align-items:center;justify-content:center">
+  <button onclick="toggleNavOverlay(false)" aria-label="Close menu" style="position:absolute;top:24px;right:32px;background:none;border:none;cursor:pointer;color:#fff;line-height:1;padding:8px">
+    <span class="material-symbols-outlined" style="font-size:32px">close</span>
+  </button>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center;padding:32px">
+    <a href="index.html" onclick="navOverlayGo(event,'index.html')" style="font-size:clamp(28px,5vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;color:#fff;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#ca8a04'" onmouseout="this.style.color='#fff'">Home</a>
+    <span style="font-size:clamp(28px,5vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;color:#ca8a04">About Us</span>
+    <a href="product.html" onclick="navOverlayGo(event,'product.html')" style="font-size:clamp(28px,5vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;color:#fff;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#ca8a04'" onmouseout="this.style.color='#fff'">Product</a>
+    <a href="site-reference.html" onclick="navOverlayGo(event,'site-reference.html')" style="font-size:clamp(28px,5vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;color:#fff;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#ca8a04'" onmouseout="this.style.color='#fff'">Site Reference</a>
+    <a href="contact.html" onclick="navOverlayGo(event,'contact.html')" style="font-size:clamp(28px,5vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;color:#fff;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#ca8a04'" onmouseout="this.style.color='#fff'">Contact Us</a>
+  </div>
+</div>
 <!-- Hero Section: Kinetic Titan Strategy -->
 <header id="main-content" class="pt-24 relative min-h-[921px] flex items-center overflow-hidden bg-surface">
 <div class="absolute inset-0 z-0">
@@ -366,6 +383,28 @@ English
 </div>
 </div>
 </footer>
+<script>
+function toggleNavOverlay(open) {
+  const overlay = document.getElementById('nav-overlay');
+  if (!overlay) return;
+  if (open) {
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    setTimeout(function() { overlay.style.opacity = '1'; }, 10);
+  } else {
+    overlay.style.opacity = '0';
+    document.body.style.overflow = '';
+    setTimeout(function() { overlay.style.display = 'none'; }, 350);
+  }
+}
+function navOverlayGo(e, url) {
+  e.preventDefault();
+  toggleNavOverlay(false);
+  setTimeout(function() {
+    window.navigateToSPA ? window.navigateToSPA(url, true) : (window.location.href = url);
+  }, 370);
+}
+</script>
 </body></html>
 
 
